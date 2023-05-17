@@ -1,0 +1,82 @@
+:root {
+  --UI-grey: #242424;
+  --UI-gradient: linear-gradient(90.24deg, #e43339 -9.45%, #f6a440 98.82%);
+  --UI-white: #d9d9d9;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+a {
+  color: var(--UI-white);
+  text-decoration: none;
+}
+nav,
+footer {
+  height: 90px;
+  color: var(--UI-white);
+  background: var(--UI-grey);
+  font-family: "Roboto Mono", monospace;
+  font-weight: 400;
+  font-size: 20px;
+  text-align: center;
+}
+footer {
+  text-align: left;
+  height: 160px;
+}
+nav li {
+  border-bottom: 4px solid transparent;
+  position: relative;
+}
+nav li:hover {
+  border-bottom: 4px solid;
+  border-image-slice: 1;
+  border-width: 4px;
+  border-image-source: var(--UI-gradient);
+}
+nav li + li {
+  margin-left: 32px;
+}
+footer li + li {
+  margin-top: 5px;
+}
+.pageWidth {
+  margin: 0 auto;
+  width: 66vw;
+}
+.flexblock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  height: 67px;
+  width: 100px;
+}
+footer li.flexblock {
+  justify-content: start;
+}
+.footer__location {
+  margin-right: 12px;
+  width: 16.8px;
+  height: 21px;
+}
+.footer__phone {
+  margin-right: 14px;
+  margin-left: 2px;
+  width: 12px;
+  height: 20px;
+}
+.footer__telephone {
+  margin-right: 8px;
+  margin-left: 2px;
+  width: 18px;
+  height: 18px;
+}
+.footer__contact {
+  width: 20px;
+  height: 16.01px;
+}
