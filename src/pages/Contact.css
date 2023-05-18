@@ -1,0 +1,64 @@
+.grid-wrapper {
+    display: grid;
+    align-items: center;
+    grid-template-columns: minmax(100px, 1fr) minmax(100px, 1fr);
+    row-gap: 90px;
+    column-gap: 150px;
+    background-color: white;
+    padding: 40px;
+    font-family: "Noto Sans", sans-serif;
+  }
+  ul{
+    font-size: 20px;
+    font-weight: 700;
+  }
+.form{
+    grid-column-start: 1;
+    grid-column-end: span 2;
+}
+.input-box{
+    margin: 20px 0;
+    width: 100%;
+}
+h3{
+    padding-bottom: 6px;
+}
+.text-input{
+    outline: none !important;
+    font-size: 20px;
+    width: 100%;
+    padding: 10px;
+    height: 47px;
+    /* Stack overflow  */
+    box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+    
+    border: 2px solid black ;
+    border-radius: 6px;
+    transition: all 300ms;
+}
+
+.text-input:hover{
+    border: double 2px transparent;
+    border-radius: 6px;
+    background-image: linear-gradient(white, white), 
+                        linear-gradient(60deg, #E43339 -16.94%, #d8595d 110.66%);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+.text-input:focus{
+    border: double 3px transparent;
+    border-radius: 6px;
+    background-image: linear-gradient(white, white), 
+                        linear-gradient(90.24deg, #e49333 -9.45%, #fec27a 98.82%);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    transition: all 150ms;
+}
+
+textarea{
+    resize: vertical;
+    min-height: 250px;
+}
