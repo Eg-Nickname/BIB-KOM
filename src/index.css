@@ -13,6 +13,10 @@
 body{
   background-color: var(--UI-background);
 }
+.site-wrapper{
+  min-height: 100vh;
+  position: relative;
+}
 a {
   color: var(--UI-white);
   text-decoration: none;
@@ -30,6 +34,9 @@ footer {
 footer {
   text-align: left;
   height: 160px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
 }
 nav li {
   border-bottom: 4px solid transparent;
@@ -48,6 +55,10 @@ footer li + li {
   margin-top: 5px;
 }
 .pageWidth {
+  margin: 0 auto;
+  width: 66vw;
+}
+.content{
   margin: 0 auto;
   width: 66vw;
 }

@@ -4,10 +4,9 @@ import Footer from "../components/footer";
 import placeholder from "../assets/placeholder.jpg";
 function Home() {
   return (
-    <div>
+    <div className="site-wrapper">
       <Navbar />
-      <div className="pageWidth">
-        <div className="grid-wrapper">
+        <div className="grid-wrapper content">
           <div className="grid-text">
             <b>
               Jesteśmy osobami z pasją. Wykonujemy swoją pracę z zamiłowania i
@@ -43,7 +42,6 @@ function Home() {
             <img className="grid-image" src={placeholder}></img>
           </div>
         </div>
-      </div>
       <Footer />
     </div>
   );
