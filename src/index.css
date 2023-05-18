@@ -61,6 +61,7 @@ footer li + li {
 .content{
   margin: 0 auto;
   width: 66vw;
+  padding-bottom: 170px;
 }
 .flexblock {
   display: flex;
