@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import Home from "./pages/Home.jsx";
+import Offers from "./pages/Offers.jsx";
 import Contact from "./pages/Contact.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
@@ -11,7 +12,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/kontakt" element={<Contact />} />
-        <Route path="/oferty" element={<Home />} />
+        <Route path="/oferty" element={<Offers />} />
         <Route path="/aktualności" element={<Home />} />
         <Route path="/panel" element={<Home />} />
         <Route path="/*" element={<Home />} />

@@ -3,7 +3,6 @@ import { useState } from "react";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 
-
 import telephone from "../assets/telephone-black.png";
 import phone from "../assets/phone-black.png";
 import location from "../assets/location-black.png";
@@ -54,51 +53,62 @@ function Contact() {
           </ul>
         </div>
         <div className="google-maps">
-          {/* TU MA BYĆ MAPA ALE NIE MA :( */}
+          <iframe
+            className="map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d646.3350133682515!2d19.965541988558268!3d49.610193473145976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47160b7206f7611b%3A0x469af8b558144a52!2sBiBkom%20sklep%20serwis!5e0!3m2!1spl!2spl!4v1684484970756!5m2!1spl!2spl"
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
         </div>
         <div className="form">
-        <h2>Formularz kontaktowy</h2>
-        <form onSubmit={handleSubmit}>
-        <div className="input-box">
-          <h3>Imie i nazwisko</h3>
-          <input
-            className="text-input"
-            type="text"
-            name="user"
-            value={data.user}
-            onChange={handleChange}
-          />
+          <h2>Formularz kontaktowy</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="input-box">
+              <h3>Imie i nazwisko</h3>
+              <input
+                className="text-input"
+                type="text"
+                name="user"
+                value={data.user}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="input-box">
+              <h3>E-mail</h3>
+              <input
+                className="text-input"
+                type="text"
+                name="mail"
+                value={data.mail}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="input-box">
+              <h3>Temat</h3>
+              <input
+                className="text-input"
+                type="text"
+                name="title"
+                value={data.title}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="input-box">
+              <h3>Treść</h3>
+              <textarea
+                className="text-input"
+                name="text"
+                value={data.text}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="input-box">
+              <input type="submit" value="Send" />
+            </div>
+          </form>
         </div>
-        <div className="input-box">
-        <h3>E-mail</h3>
-          <input
-            className="text-input"
-            type="text"
-            name="mail"
-            value={data.mail}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="input-box">
-        <h3>Temat</h3>
-          <input
-            className="text-input"
-            type="text"
-            name="title"
-            value={data.title}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="input-box">
-          <h3>Treść</h3>
-          <textarea className="text-input" name="text" value={data.text} onChange={handleChange} />
-        </div>
-        <div className="input-box">  
-          <input type="submit" value="Send" />
-        </div>
-        </form>
-        </div>
-      </div>   
+      </div>
       <Footer />
     </div>
   );
