@@ -1,0 +1,12 @@
+.dot {
+  background-color: var(--UI-grey);
+  border: 0px;
+  height: 30px;
+  width: 30px;
+  display: block;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.active_dot {
+  background-color: var(--UI-orange);
+}

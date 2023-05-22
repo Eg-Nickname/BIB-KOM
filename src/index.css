@@ -2,7 +2,8 @@
   --UI-grey: #242424;
   --UI-gradient: linear-gradient(90.24deg, #e43339 -9.45%, #f6a440 98.82%);
   --UI-white: #d9d9d9;
-  --UI-background: #F3F1ED;
+  --UI-background: #f3f1ed;
+  --UI-orange: #e49333;
 }
 
 * {
@@ -10,10 +11,10 @@
   margin: 0;
   list-style: none;
 }
-body{
+body {
   background-color: var(--UI-background);
 }
-.site-wrapper{
+.site-wrapper {
   min-height: 100vh;
   position: relative;
 }
@@ -58,7 +59,7 @@ footer li + li {
   margin: 0 auto;
   width: 66vw;
 }
-.content{
+.content {
   margin: 0 auto;
   width: 66vw;
   padding-bottom: 170px;
