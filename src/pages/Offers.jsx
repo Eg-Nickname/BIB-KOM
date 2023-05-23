@@ -6,11 +6,11 @@ import PhotoSlider from "../components/photoSlider";
 import placeholder from "../assets/placeholder.jpg";
 function Offers() {
   const [images, setImages] = useState([
-    { src: "1.png", alt: "Zdj1" },
-    { src: "2.png", alt: "Zdj2" },
-    { src: "3.png", alt: "Zdj3" },
-    { src: "4.png", alt: "Zdj4" },
-    { src: "5.png", alt: "Zdj5" },
+    { src: "1.png", text: "Zdj1" },
+    { src: "2.png", text: "Zdj2" },
+    { src: "3.png", text: "Zdj3" },
+    { src: "4.png", text: "Zdj4" },
+    { src: "5.png", text: "Zdj5" },
   ]);
   return (
     <div>

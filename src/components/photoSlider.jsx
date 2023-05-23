@@ -21,7 +21,7 @@ function PhotoSlider(props) {
     };
   });
   console.log(dots);
-  const setPhoto = async (n) => {
+  const setPhoto = (n) => {
     if (currentIndex + n < images.length) {
       setCurrentIndex((prevIndex) => prevIndex + n);
     } else {
@@ -33,8 +33,9 @@ function PhotoSlider(props) {
       <ul className="flexblock">{dots}</ul>
       <img
         src={`src/assets/${images[currentIndex].src}`}
-        alt={images[currentIndex].alt}
+        alt={images[currentIndex].text}
       />
+      {images[currentIndex].text}
     </div>
   );
 }
