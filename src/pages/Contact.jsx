@@ -31,6 +31,7 @@ function Contact() {
   return (
     <div className="site-wrapper">
       <Navbar />
+      <div className="cage">
       <div className="grid-wrapper content">
         <div className="contact-info">
           <ul>
@@ -109,8 +110,10 @@ function Contact() {
           </form>
         </div>
       </div>
+      </div>
       <Footer />
     </div>
+    
   );
 }
 

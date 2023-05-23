@@ -61,9 +61,13 @@ footer li + li {
   width: 66vw;
 }
 .content {
+  padding-bottom: 170px;
+}
+.cage{
   margin: 0 auto;
   width: 66vw;
-  padding-bottom: 170px;
+  min-height: calc(100vh - 120px);;
+  background-color: white;
 }
 .flexblock {
   display: flex;

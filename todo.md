@@ -1,5 +1,4 @@
 - responsywa
 - obsługa emaila po stronie serwera
 - obsługa błędów w formularzu kontaktowym
-- ostylowanie kontaktów
-- dodać mape google do kontaktu
+- css (nie wypełnia białego do stopki)
