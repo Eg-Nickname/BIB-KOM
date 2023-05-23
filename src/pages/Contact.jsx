@@ -55,7 +55,7 @@ function Contact() {
         <div className="google-maps">
           <iframe
             className="map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d646.3350133682515!2d19.965541988558268!3d49.610193473145976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47160b7206f7611b%3A0x469af8b558144a52!2sBiBkom%20sklep%20serwis!5e0!3m2!1spl!2spl!4v1684484970756!5m2!1spl!2spl"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d646.3350133682515!2d19.965541988558268!3d49.610193473145976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47160b7206f7611b%3A0x469af8b558144a52!2sBiBkom%20sklep%20serwis!5e0!3m2!1spl!2spl!4v1684484970756!5m2!1spl!2spl&z=14"
             allowFullScreen=""
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
@@ -104,7 +104,7 @@ function Contact() {
               />
             </div>
             <div className="input-box">
-              <input type="submit" value="Send" />
+              <input type="submit" value="Wyślij" className="send-input" />
             </div>
           </form>
         </div>
