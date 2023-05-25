@@ -4,6 +4,7 @@
   --UI-white: #d9d9d9;
   --UI-background: #f3f1ed;
   --UI-orange: #e49333;
+  --UI-red: #e43339;
 }
 
 * {
@@ -60,9 +61,13 @@ footer li + li {
   width: 66vw;
 }
 .content {
+  padding-bottom: 170px;
+}
+.cage{
   margin: 0 auto;
   width: 66vw;
-  padding-bottom: 170px;
+  min-height: calc(100vh - 120px);;
+  background-color: white;
 }
 .flexblock {
   display: flex;

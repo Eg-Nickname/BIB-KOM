@@ -11,13 +11,17 @@ function Offers() {
     { src: "3.png", text: "Zdj3" },
     { src: "4.png", text: "Zdj4" },
     { src: "5.png", text: "Zdj5" },
+    { src: "test_big_image.jpg", text: "Porsche" },
+
+
   ]);
   return (
     <div>
       <Navbar />
-      <div>
-        <PhotoSlider images={images} />
-        <img src={placeholder}></img>
+      <div className="pageWidth">
+        <div className="cage">
+          <PhotoSlider images={images} />
+        </div>
       </div>
       <Footer />
     </div>

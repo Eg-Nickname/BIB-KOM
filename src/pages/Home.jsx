@@ -6,6 +6,7 @@ function Home() {
   return (
     <div className="site-wrapper">
       <Navbar />
+      <div className="cage">
         <div className="grid-wrapper content">
           <div className="grid-text">
             <b>
@@ -42,6 +43,7 @@ function Home() {
             <img className="grid-image" src={placeholder}></img>
           </div>
         </div>
+      </div>
       <Footer />
     </div>
   );

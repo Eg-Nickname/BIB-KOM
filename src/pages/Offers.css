@@ -1,3 +1,4 @@
+
 .dot {
   background-color: var(--UI-grey);
   border: 0px;
@@ -9,4 +10,24 @@
 }
 .active_dot {
   background-color: var(--UI-orange);
+}
+
+.Photosliderimages {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 46vh;
+}
+
+.Photoslidertext{
+  display: flex;
+  justify-content: center;
+}
+.slider_back{
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px; 
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }

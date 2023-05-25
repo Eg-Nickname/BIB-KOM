@@ -20,7 +20,7 @@ function PhotoSlider(props) {
       clearInterval(interval);
     };
   });
-  console.log(dots);
+  // console.log(dots);
   const setPhoto = (n) => {
     if (currentIndex + n < images.length) {
       setCurrentIndex((prevIndex) => prevIndex + n);
@@ -30,12 +30,12 @@ function PhotoSlider(props) {
   };
   return (
     <div className="Photoslider">
-      <ul className="flexblock">{dots}</ul>
-      <img
+      <img className="Photosliderimages"
         src={`src/assets/${images[currentIndex].src}`}
         alt={images[currentIndex].text}
       />
-      {images[currentIndex].text}
+      <div className="Photoslidertext">{images[currentIndex].text}</div>
+      <ul className="slider_back">{dots}</ul>
     </div>
   );
 }
