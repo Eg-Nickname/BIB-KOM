@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Photo from "./photo.jsx";
 function PhotoSlider(props) {
   const { images } = props;
-  const Interval = 4000;
+  const Interval = 6000;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(images.length - 1);
   const dots = images.map((n, index) => (
