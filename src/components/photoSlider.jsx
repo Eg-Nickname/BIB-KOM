@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import Photo from "./photo.jsx";
 function PhotoSlider(props) {
   const { images } = props;
   const Interval = 4000;
@@ -10,8 +10,8 @@ function PhotoSlider(props) {
       <button
         className={currentIndex === index ? "dot active_dot" : "dot"}
         onClick={() => {
-          setPrevIndex(currentIndex)
-          setCurrentIndex(index)
+          setPrevIndex(currentIndex);
+          setCurrentIndex(index);
         }}
       ></button>
     </li>
@@ -26,31 +26,18 @@ function PhotoSlider(props) {
   });
   const setPhoto = (n) => {
     if (currentIndex + n < images.length) {
-      setPrevIndex(currentIndex)
+      setPrevIndex(currentIndex);
       setCurrentIndex((prevIndex) => prevIndex + n);
     } else {
-      setPrevIndex(currentIndex)
+      setPrevIndex(currentIndex);
       setCurrentIndex(0);
     }
   };
   return (
     <div className="Photoslider">
       <div className="PhotosWrapper">
-        <div className="prevPhoto">
-            <img className="Photosliderimages"
-              src={`src/assets/${images[prevIndex].src}`}
-              alt={images[prevIndex].text}
-            />
-            <div className="Photoslidertext">{images[prevIndex].text}</div>
-          </div>
-
-          <div className="currentPhoto">
-            <img className="Photosliderimages"
-              src={`src/assets/${images[currentIndex].src}`}
-              alt={images[currentIndex].text}
-            />
-        </div>
-        <div className="Photoslidertext">{images[currentIndex].text}</div>
+        <Photo key={1} photo={images[prevIndex]} class="prevPhoto" />
+        <Photo key={2} photo={images[currentIndex]} class="currentPhoto" />
       </div>
       <ul className="slider_back">{dots}</ul>
     </div>
