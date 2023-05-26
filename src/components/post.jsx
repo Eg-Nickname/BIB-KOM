@@ -4,10 +4,12 @@ function Post(props) {
   const source = `${path}${src}`;
   return (
     <div className="post">
-      <h1>{title}</h1>
-      <h1>{date}</h1>
-      <p>{text}</p>
-      <img src={source}></img>
+      <div className="header">
+        <a className="title">{title}</a>
+        <a className="date">{date}</a>
+      </div>
+      <img className="post-image" src={source}></img>
+      <p className="text">{text}</p>
     </div>
   );
 }

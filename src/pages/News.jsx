@@ -10,7 +10,11 @@ function News() {
   return (
     <div className="site-wrapper">
       <Navbar />
-      {elements}
+      <div className="cage">
+        <div className="news-grid-wrapper">
+          {elements}
+        </div>
+      </div>
       <Footer />
     </div>
   );
