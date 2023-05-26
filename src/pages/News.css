@@ -1,0 +1,30 @@
+.news-grid-wrapper{
+    grid-template-columns: 1fr;
+    display: grid;
+    padding: 20px;
+    row-gap: 30px;
+}
+.post{
+    background-color: white;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.post .header{
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+}
+.post .header .date{
+    color: rgb(150, 150, 150);
+}
+
+.post .header .title{
+    font-weight: 700;
+    font-size: 30px;
+    color: black;
+}
+.post-image{
+    margin: 0 auto;
+    left: 50%;
+}

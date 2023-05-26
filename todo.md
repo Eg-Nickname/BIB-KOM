@@ -1,4 +1,4 @@
 - responsywa
 - obsługa emaila po stronie serwera
 - obsługa błędów w formularzu kontaktowym
-- css (nie wypełnia białego do stopki)
+- środkowanie zdjęcia w postach
