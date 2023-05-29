@@ -84,3 +84,9 @@
   opacity: 1;
   margin: 0 auto;
 }
+
+@media (max-width: 600px){
+  .slider_back {
+    width: 100%;
+  }
+}

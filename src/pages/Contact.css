@@ -84,3 +84,18 @@ textarea {
   background-color: #e43339;
   border: 2px solid #e7484d;
 }
+
+@media (max-width: 820px){
+  .grid-wrapper{
+    grid-template-columns: minmax(100px, 1fr) !important;
+  }
+  .form{
+    grid-column-start: 1;
+    grid-column-end: span 1;
+  }
+  .google-maps{
+    min-width: 80vw;
+    min-height: auto;
+    margin: 0 auto;
+  }
+}
