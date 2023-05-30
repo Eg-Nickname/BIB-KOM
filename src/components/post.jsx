@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
+
 function Post(props) {
-  const { title, date, text, src } = props.data;
+  const { Post_id, title, date, text, image } = props.data;
   const path = "/src/assets/postImages/";
-  const source = `${path}${src}`;
+  const source = `${path}${image}`;
   return (
     <div className="post">
       <div className="header">
@@ -10,6 +12,7 @@ function Post(props) {
       </div>
       <img className="post-image" src={source}></img>
       <p className="text">{text}</p>
+      <Link to={`/aktualności/${Post_id}`}>Kliknij</Link>
     </div>
   );
 }

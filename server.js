@@ -1,5 +1,6 @@
 import express from "express";
 import pg from "pg";
+import cors from "cors";
 const Pool = pg.Pool;
 const pool = new Pool({
   user: "postgres",
@@ -12,7 +13,7 @@ const pool = new Pool({
 const PORT = 5000;
 const app = express();
 app.use(express.json());
-
+app.use(cors());
 app.get("/api/posts", async (req, res) => {
   try {
     const query = await pool.query('SELECT * FROM "Posts"');

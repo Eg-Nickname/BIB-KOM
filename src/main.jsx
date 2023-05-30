@@ -4,6 +4,7 @@ import Home from "./pages/Home.jsx";
 import News from "./pages/News.jsx";
 import Offers from "./pages/Offers.jsx";
 import Contact from "./pages/Contact.jsx";
+import PostPage from "./pages/PostPage.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 
@@ -15,6 +16,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/kontakt" element={<Contact />} />
         <Route path="/oferty" element={<Offers />} />
         <Route path="/aktualności" element={<News />} />
+        <Route path="/aktualności/*" element={<PostPage />} />
         <Route path="/panel" element={<Home />} />
         <Route path="/*" element={<Home />} />
       </Routes>
