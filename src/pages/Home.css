@@ -28,3 +28,27 @@
   max-width: 700px;
   padding: 20px;
 }
+
+@media (max-width: 1400px){
+  .grid-wrapper {
+    row-gap: 50px !important;
+    column-gap: 50px !important;
+  } 
+}
+
+@media (max-width: 940px){
+  .grid-wrapper{
+    grid-template-columns: minmax(100px, 1fr) !important;
+  }
+  .spacer{
+    grid-column-start: 1;
+    grid-column-end: span 1;
+  }
+  #force-second{
+    grid-row-start: 5;
+  }
+  #force-first{
+    grid-row-start: 4;
+  }
+}
+

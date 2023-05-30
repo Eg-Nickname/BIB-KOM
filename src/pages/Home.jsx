@@ -23,11 +23,11 @@ function Home() {
 
           <div className="spacer"></div>
 
-          <div className="smth">
+          <div className="smth" id="force-second">
             <img className="grid-image" src={placeholder}></img>
           </div>
-          <div className="grid-text">
-            Naszą mocną stroną jest indywidualne podejście do klientów.
+          <div className="grid-text" id="force-first">
+          <b>Naszą mocną stroną jest indywidualne podejście do klientów. </b>
             Dokonujemy wycen oraz doboru sprzętu z uwzględnieniem ich potrzeb i
             wymagań. Większość diagnoz uszkodzonego sprzętu dokonujemy na
             poczekaniu i bezpłatnie.

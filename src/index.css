@@ -14,6 +14,7 @@
 }
 body {
   background-color: var(--UI-background);
+  overflow-x: hidden;
 }
 .site-wrapper {
   min-height: 100vh;
@@ -61,7 +62,7 @@ footer li + li {
   width: 66vw;
 }
 .content {
-  padding-bottom: 170px;
+  padding-bottom: 190px;
 }
 .cage{
   margin: 0 auto;
@@ -101,4 +102,16 @@ footer li.flexblock {
 .footer__contact {
   width: 20px;
   height: 16.01px;
+}
+
+@media (max-width: 1400px){
+  .cage{
+    width: 100%;
+  }
+  .pageWidth{
+    width: 100%;
+  }
+  nav{
+    padding: 0px 60px;
+  }
 }
