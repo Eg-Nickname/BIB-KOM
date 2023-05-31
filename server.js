@@ -1,6 +1,31 @@
 import express from "express";
 import pg from "pg";
 import cors from "cors";
+import multer from "multer";
+import path from "path";
+import fs from "fs";
+
+const image_folder = "./src/assets/postImages";
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, image_folder);
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage });
+
+const remove_image = (delete_path) => {
+  fs.unlink(delete_path, (err) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+  });
+};
+
 const Pool = pg.Pool;
 const pool = new Pool({
   user: "postgres",
@@ -38,11 +63,13 @@ app.get("/api/posts/:id", async (req, res) => {
   }
 });
 
-app.post("/api/posts", async (req, res) => {
-  const { title, date, text, image } = req.body;
+app.post("/api/posts", upload.single("image"), async (req, res) => {
   try {
+    let data = req.file
+      ? { ...req.body, image: req.file.filename }
+      : { ...req.body, image: "undefined.png" };
     const query = await pool.query(
-      `INSERT INTO "Posts" (title,date,text,image) VALUES ('${title}','${date}','${text}','${image}') RETURNING *`
+      `INSERT INTO "Posts" (title,date,text,image) VALUES ('${data.title}','${data.date}','${data.text}','${data.image}') RETURNING *`
     );
     res.json({ success: true, data: query.rows });
   } catch (err) {
@@ -58,6 +85,14 @@ app.delete("/api/posts/:id", async (req, res) => {
     );
     if (query.rowCount === 0) {
       return res.json({ success: false, msg: "Post not found" });
+    }
+    if (query.rows[0].image !== "undefined.png") {
+      let delete_path = path.join(
+        "./src/assets/postImages",
+        query.rows[0].image
+      );
+      console.log(delete_path);
+      remove_image(delete_path);
     }
     res.json({ success: true, data: query.rows });
   } catch (err) {
