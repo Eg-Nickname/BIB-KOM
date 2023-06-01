@@ -10,21 +10,40 @@
     border-radius: 15px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.post .header{
-    display: flex;
-    justify-content: space-between;
-    align-items: top;
+
+
+.post-image{
+    height: 220px;
 }
-.post .header .date{
+.title{
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 700;
+    font-size: 38px;
+    color: black;
+}
+
+.date{
+    font-family: "Noto Sans", sans-serif;
     color: rgb(150, 150, 150);
 }
 
-.post .header .title{
+.send-input {
+    font-family: "Noto Sans", sans-serif;
+    padding: 10px;
+    background-color: #e49333;
     font-weight: 700;
-    font-size: 30px;
-    color: black;
-}
-.post-image{
-    margin: 0 auto;
-    left: 50%;
-}
+    border: 2px solid #f0a54a;
+    border-radius: 10px;
+    transition: all 300ms;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .send-input:hover {
+    background-color: #e43339;
+    border: 2px solid #e7484d;
+  }
+  
+  .post{
+    height: 260px;
+  }

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Navbar from "../components/navbar";
 import axios from "axios";
 import Footer from "../components/footer";
+import placeholder from "../assets/placeholder.jpg";
 import { useLocation } from "react-router-dom";
 function PostPage() {
   const [post, setPost] = useState({});
@@ -27,10 +28,18 @@ function PostPage() {
     <div className="site-wrapper">
       <Navbar />
       <div className="cage">
-        <h1>Title : {post.title}</h1>
-        <h1>date: {post.date}</h1>
-        <p>{post.text}</p>
-        <img src={postImg}></img>
+        <div className="margin">
+          <div className="flexblock">
+            <div className="headers">
+              <div className="title">{post.title}</div>
+              <div className="date">{post.date}</div>
+            </div>
+            <div>
+              <img className="imger"src={postImg}></img>
+            </div>
+          </div>
+          <div className="content">{post.text}</div>
+        </div>
       </div>
       <Footer />
     </div>

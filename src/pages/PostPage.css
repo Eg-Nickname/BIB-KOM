@@ -28,3 +28,28 @@
   max-width: 700px;
   padding: 20px;
 }
+.headers{
+  font-family: "Noto Sans", sans-serif;
+}
+.date{
+  font-family: "Noto Sans", sans-serif;
+  color: rgb(150, 150, 150);
+}
+.title{
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 700;
+  font-size: 46px;
+  color: black;
+}
+.margin{
+  padding: 20px;
+}
+.imger{
+  height: 300px;
+  border-radius: 20px;
+}
+
+.content{
+  font-family: "Noto Sans", sans-serif;
+  font-size: 12;
+}

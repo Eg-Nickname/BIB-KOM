@@ -32,7 +32,7 @@ const pool = new Pool({
   host: "localhost",
   database: "Bibkom",
   password: "1234",
-  port: 5001,
+  port: 5432,
 });
 
 const PORT = 5000;
