@@ -6,13 +6,16 @@ function Post(props) {
   const source = `${path}${image}`;
   return (
     <div className="post">
+      <div className="flexblock">
       <div className="header">
-        <a className="title">{title}</a>
-        <a className="date">{date}</a>
+        <div className="title">{title}</div>
+        <div className="date">{date}</div>
       </div>
       <img className="post-image" src={source}></img>
-      <p className="text">{text}</p>
-      <Link to={`/aktualności/${Post_id}`}>Kliknij</Link>
+      </div>
+      <div className="padding-button">
+      <Link className="send-input" to={`/aktualności/${Post_id}`}>Czytaj</Link>
+      </div>
     </div>
   );
 }
