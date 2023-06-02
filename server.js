@@ -4,6 +4,10 @@ import cors from "cors";
 import multer from "multer";
 import path from "path";
 import fs from "fs";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const image_folder = "./src/assets/postImages";
 const storage = multer.diskStorage({
@@ -26,6 +30,12 @@ const remove_image = (delete_path) => {
   });
 };
 
+function generateAccessToken() {
+  return jwt.sign({ logged: true }, process.env.ACCESS_TOKEN_SECRET, {
+    expiresIn: "1h",
+  });
+}
+
 const Pool = pg.Pool;
 const pool = new Pool({
   user: "postgres",
@@ -39,6 +49,18 @@ const PORT = 5000;
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+app.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+  if (username === process.env.USER) {
+    if (password === process.env.PASSWORD) {
+      const token = generateAccessToken();
+      return res.json({ success: true, token: token });
+    }
+    return res.json({ success: false, msg: "Niepoprawne hasło" });
+  }
+  res.json({ success: false, msg: "Niepoprawny nick" });
+});
 app.get("/api/posts", async (req, res) => {
   try {
     const query = await pool.query('SELECT * FROM "Posts"');
@@ -47,7 +69,6 @@ app.get("/api/posts", async (req, res) => {
     res.json({ success: false, msg: err.message });
   }
 });
-
 app.get("/api/posts/:id", async (req, res) => {
   const { id } = req.params;
   try {
