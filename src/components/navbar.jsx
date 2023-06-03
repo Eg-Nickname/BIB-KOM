@@ -1,7 +1,28 @@
 import logo from "../assets/Logo.png";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { memo } from "react";
+import axios from "axios";
 
-function Navbar() {
+const Navbar = memo((props) => {
+  const { isLogged, setIsLogged } = props;
+  useEffect(() => {
+    async function Authenticate() {
+      const token = localStorage.getItem("token");
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/authentication",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        setIsLogged(true);
+      } catch (err) {
+        console.log(err.response.data);
+      }
+    }
+    Authenticate();
+  }, []);
   return (
     <nav className="flexblock">
       <div className="flexblock pageWidth">
@@ -23,6 +44,6 @@ function Navbar() {
       </div>
     </nav>
   );
-}
+});
 
 export default Navbar;

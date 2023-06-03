@@ -36,13 +36,25 @@ function generateAccessToken() {
   });
 }
 
+const authenticateToken = (req, res) => {
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1];
+  if (token == null)
+    return res.status(401).json({ success: false, msg: "Token not provided" });
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+    if (err)
+      return res.status(403).json({ success: false, msg: "Not valid token" });
+    res.status(200).json({ success: true, logged: true });
+  });
+};
+
 const Pool = pg.Pool;
 const pool = new Pool({
   user: "postgres",
   host: "localhost",
   database: "Bibkom",
   password: "1234",
-  port: 5432,
+  port: 5001,
 });
 
 const PORT = 5000;
@@ -50,23 +62,25 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+app.get("/authentication", authenticateToken);
+
 app.post("/login", async (req, res) => {
   const { username, password } = req.body;
-  if (username === process.env.USER) {
-    if (password === process.env.PASSWORD) {
+  if (username == process.env.USER) {
+    if (password == process.env.PASSWORD) {
       const token = generateAccessToken();
-      return res.json({ success: true, token: token });
+      return res.status(200).json({ success: true, token: token });
     }
-    return res.json({ success: false, msg: "Niepoprawne hasło" });
+    return res.status(400).json({ success: false, msg: "Niepoprawne hasło" });
   }
-  res.json({ success: false, msg: "Niepoprawny nick" });
+  res.status(400).json({ success: false, msg: "Niepoprawny nick" });
 });
 app.get("/api/posts", async (req, res) => {
   try {
     const query = await pool.query('SELECT * FROM "Posts"');
-    res.json({ success: true, data: query.rows });
+    res.status(200).json({ success: true, data: query.rows });
   } catch (err) {
-    res.json({ success: false, msg: err.message });
+    res.status(400).json({ success: false, msg: err.message });
   }
 });
 app.get("/api/posts/:id", async (req, res) => {
@@ -76,11 +90,11 @@ app.get("/api/posts/:id", async (req, res) => {
       `SELECT * FROM "Posts" WHERE "Post_id"=${id}`
     );
     if (query.rowCount === 0) {
-      return res.json({ success: false, msg: "Post not found" });
+      return res.status(404).json({ success: false, msg: "Post not found" });
     }
-    res.json({ success: true, data: query.rows });
+    res.status(200).json({ success: true, data: query.rows });
   } catch (err) {
-    res.json({ success: false, msg: err.message });
+    res.status(400).json({ success: false, msg: err.message });
   }
 });
 
@@ -90,11 +104,11 @@ app.post("/api/posts", upload.single("image"), async (req, res) => {
       ? { ...req.body, image: req.file.filename }
       : { ...req.body, image: "undefined.png" };
     const query = await pool.query(
-      `INSERT INTO "Posts" (title,date,text,image) VALUES ('${data.title}','${data.date}','${data.text}','${data.image}') RETURNING *`
+      `INSERT INTO "Posts" (title,text,image) VALUES ('${data.title}','${data.text}','${data.image}') RETURNING *`
     );
-    res.json({ success: true, data: query.rows });
+    res.status(200).json({ success: true, data: query.rows });
   } catch (err) {
-    res.json({ success: false, msg: err.message });
+    res.status(400).json({ success: false, msg: err.message });
   }
 });
 
@@ -105,19 +119,18 @@ app.delete("/api/posts/:id", async (req, res) => {
       `DELETE FROM "Posts" WHERE "Post_id"=${id} RETURNING * `
     );
     if (query.rowCount === 0) {
-      return res.json({ success: false, msg: "Post not found" });
+      return res.status(404).json({ success: false, msg: "Post not found" });
     }
     if (query.rows[0].image !== "undefined.png") {
       let delete_path = path.join(
         "./src/assets/postImages",
         query.rows[0].image
       );
-      console.log(delete_path);
       remove_image(delete_path);
     }
-    res.json({ success: true, data: query.rows });
+    res.status(200).json({ success: true, data: query.rows });
   } catch (err) {
-    res.json({ success: false, msg: err.message });
+    res.status(400).json({ success: false, msg: err.message });
   }
 });
 

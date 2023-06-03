@@ -1,21 +1,46 @@
 import { Link } from "react-router-dom";
-
+import axios from "axios";
 function Post(props) {
-  const { Post_id, title, date, text, image } = props.data;
+  const { Post_id, title, date, image } = props.data;
+  const setClick = props.setClick;
+  const isLogged = props.isLogged;
   const path = "/src/assets/postImages/";
   const source = `${path}${image}`;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await deletePost(Post_id);
+    setClick((prevClick) => prevClick + 1);
+  };
+  async function deletePost(id) {
+    try {
+      const response = await axios.delete(
+        `http://localhost:5000/api/posts/${id}`
+      );
+    } catch (err) {
+      console.log(err.response.data.msg);
+    }
+  }
   return (
     <div className="post">
-      <div className="flexblock">
-      <div className="header">
-        <div className="title">{title}</div>
-        <div className="date">{date}</div>
-      </div>
-      <img className="post-image" src={source}></img>
-      </div>
-      <div className="padding-button">
-      <Link className="send-input" to={`/aktualności/${Post_id}`}>Czytaj</Link>
-      </div>
+      <form onSubmit={handleSubmit}>
+        <div className="flexblock">
+          <div className="header">
+            <div className="title">{title}</div>
+            <div className="date">{date}</div>
+          </div>
+          <img className="post-image" src={source}></img>
+        </div>
+        <div className="padding-button">
+          <Link className="send-input" to={`/aktualności/${Post_id}`}>
+            Czytaj
+          </Link>
+        </div>
+        {isLogged && (
+          <div className="padding-button">
+            <button className="send-input">Usuń</button>
+          </div>
+        )}
+      </form>
     </div>
   );
 }
