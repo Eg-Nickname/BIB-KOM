@@ -83,6 +83,20 @@ app.get("/api/posts", async (req, res) => {
     res.status(400).json({ success: false, msg: err.message });
   }
 });
+app.get("/api/posts/page", async (req, res) => {
+  const currentPage = req.query.page || 0;
+  const postCountPerPage = 3;
+  try {
+    const query = await pool.query(`
+    SELECT * FROM "Posts"
+    ORDER BY "date" DESC
+    OFFSET (${currentPage} - 1) * ${postCountPerPage}
+    LIMIT ${postCountPerPage};`);
+    res.status(200).json({ success: true, data: query.rows });
+  } catch (err) {
+    res.status(400).json({ success: false, msg: err.message });
+  }
+});
 app.get("/api/questions", async (req, res) => {
   try {
     const query = await pool.query('SELECT * FROM "Questions"');

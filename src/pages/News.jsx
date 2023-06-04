@@ -7,6 +7,7 @@ import Footer from "../components/footer";
 import Post from "../components/post";
 function News() {
   const [posts, setPosts] = useState([{}]);
+  const [page, setPage] = useState(1);
   const [click, setClick] = useState(1);
   const [isLogged, setIsLogged] = useState(false);
   const [data, setData] = useState({
@@ -15,7 +16,6 @@ function News() {
   });
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const response = await axios.post(
         "http://localhost:5000/api/posts",
@@ -42,11 +42,13 @@ function News() {
   };
   useEffect(() => {
     async function fetchPosts() {
-      const response = await axios.get(`http://localhost:5000/api/posts`);
+      const response = await axios.get(
+        `http://localhost:5000/api/posts/page?page=${page}`
+      );
       setPosts(response.data.data);
     }
     fetchPosts();
-  }, [click]);
+  }, [click, page]);
   const elements = posts.map((elem, index) => {
     return (
       <Post key={index} data={elem} setClick={setClick} isLogged={isLogged} />
@@ -69,6 +71,13 @@ function News() {
             <button>Prześlij</button>
           </form>
         )}
+        <button onClick={() => setPage(page - 1)} disabled={page === 1}>
+          -
+        </button>
+        {page}
+        <button onClick={() => setPage(page + 1)} disabled={posts.length < 3}>
+          +
+        </button>
       </div>
       <Footer />
     </div>
