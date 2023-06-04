@@ -5,6 +5,9 @@ import Navbar from "../components/navbar";
 import axios from "axios";
 import Footer from "../components/footer";
 import Post from "../components/post";
+import arrowleft from "../assets/arrow-left-solid.svg";
+import arrowright from "../assets/arrow-right-solid.svg";
+
 function News() {
   const [posts, setPosts] = useState([{}]);
   const [page, setPage] = useState(1);
@@ -57,8 +60,8 @@ function News() {
   return (
     <div className="site-wrapper">
       <Navbar isLogged={isLogged} setIsLogged={setIsLogged} />
-      <div className="cage">
-        <div className="news-grid-wrapper content">{elements}</div>
+      <div className="cage content">
+        <div className="news-grid-wrapper">{elements}</div>
         {isLogged && (
           <form onSubmit={handleSubmit}>
             <input
@@ -71,13 +74,16 @@ function News() {
             <button>Prześlij</button>
           </form>
         )}
-        <button onClick={() => setPage(page - 1)} disabled={page === 1}>
-          -
-        </button>
-        {page}
-        <button onClick={() => setPage(page + 1)} disabled={posts.length < 3}>
-          +
-        </button>
+        <div className="page-change-container">
+          <button className="page-change" onClick={() => setPage(page - 1)} disabled={page === 1}>
+          <img className="arrow-image" src={arrowleft}></img>
+          </button>
+          <a href="#"className="page-number">{page}</a>
+          <button className="page-change" onClick={() => setPage(page + 1)} disabled={posts.length < 3}>
+          <img className="arrow-image" src={arrowright}></img>
+          </button>
+        </div>
+
       </div>
       <Footer />
     </div>

@@ -29,7 +29,7 @@ function PostPage() {
     <div className="site-wrapper">
       <Navbar isLogged={isLogged} setIsLogged={setIsLogged} />
       <div className="cage">
-        <div className="margin">
+        <div className="margin content">
           <div className="flexblock">
             <div className="headers">
               <div className="title">{post.title}</div>
@@ -39,7 +39,7 @@ function PostPage() {
               <img className="imger" src={postImg}></img>
             </div>
           </div>
-          <div className="content">{post.text}</div>
+          <div className="post-text">{post.text}</div>
         </div>
       </div>
       <Footer />

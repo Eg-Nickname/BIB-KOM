@@ -1,5 +1,4 @@
-- responsywa
 - obsługa emaila po stronie serwera
 - obsługa błędów w formularzu kontaktowym
-- środkowanie zdjęcia w postach
 - statusy do API
+- responsywa postpage
