@@ -30,7 +30,7 @@ function Panel() {
     <div className="site-wrapper">
       <Navbar isLogged={isLogged} setIsLogged={setIsLogged} />
       <div className="cage">
-        {isLogged && <div className="news-grid-wrapper">{elements}</div>}
+        {isLogged && <div className="questions-grid-wrapper content">{elements}</div>}
       </div>
       <Footer />
     </div>

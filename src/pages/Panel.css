@@ -1,49 +1,19 @@
-/* .news-grid-wrapper{
-    grid-template-columns: 1fr;
+.questions-grid-wrapper{
     display: grid;
-    padding: 20px;
     row-gap: 30px;
-}
-.post{
-    background-color: white;
-    padding: 15px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    grid-template-columns: 1fr;
+    padding: 20px;
 }
 
-
-.post-image{
-    height: 220px;
+.question-mail{
+    padding-bottom: 20px;
 }
-.title{
-    font-family: "Noto Sans", sans-serif;
-    font-weight: 700;
-    font-size: 38px;
-    color: black;
+.question-name{
+    padding-bottom: 20px;
 }
-
-.date{
-    font-family: "Noto Sans", sans-serif;
-    color: rgb(150, 150, 150);
+.question-topic{
+    padding-bottom: 20px;
 }
-
-.send-input {
-    font-family: "Noto Sans", sans-serif;
-    padding: 10px;
-    background-color: #e49333;
-    font-weight: 700;
-    border: 2px solid #f0a54a;
-    border-radius: 10px;
-    transition: all 300ms;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .send-input:hover {
-    background-color: #e43339;
-    border: 2px solid #e7484d;
-  }
-  
-  .post{
-    height: 260px;
-  } */
+.question-text{
+    padding-bottom: 20px;
+}
