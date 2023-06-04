@@ -30,13 +30,13 @@ function Post(props) {
           </div>
           <img className="post-image" src={source}></img>
         </div>
-        <div className="padding-button">
+        <div className="post-button">
           <Link className="send-input" to={`/aktualności/${Post_id}`}>
             Czytaj
           </Link>
         </div>
         {isLogged && (
-          <div className="padding-button">
+          <div className="post-button">
             <button className="send-input">Usuń</button>
           </div>
         )}
