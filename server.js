@@ -83,6 +83,25 @@ app.get("/api/posts", async (req, res) => {
     res.status(400).json({ success: false, msg: err.message });
   }
 });
+app.get("/api/questions", async (req, res) => {
+  try {
+    const query = await pool.query('SELECT * FROM "Questions"');
+    res.status(200).json({ success: true, data: query.rows });
+  } catch (err) {
+    res.status(400).json({ success: false, msg: err.message });
+  }
+});
+app.post("/api/questions", async (req, res) => {
+  try {
+    let data = req.body;
+    const query = await pool.query(
+      `INSERT INTO "Questions" ("Email","Name","Topic","text") VALUES ('${data.email}','${data.name}','${data.topic}','${data.text}') RETURNING *`
+    );
+    res.status(200).json({ success: true, data: query.rows });
+  } catch (err) {
+    res.status(400).json({ success: false, msg: err.message });
+  }
+});
 app.get("/api/posts/:id", async (req, res) => {
   const { id } = req.params;
   try {
@@ -127,6 +146,23 @@ app.delete("/api/posts/:id", async (req, res) => {
         query.rows[0].image
       );
       remove_image(delete_path);
+    }
+    res.status(200).json({ success: true, data: query.rows });
+  } catch (err) {
+    res.status(400).json({ success: false, msg: err.message });
+  }
+});
+
+app.delete("/api/questions/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const query = await pool.query(
+      `DELETE FROM "Questions" WHERE "Question_id"=${id} RETURNING * `
+    );
+    if (query.rowCount === 0) {
+      return res
+        .status(404)
+        .json({ success: false, msg: "Question not found" });
     }
     res.status(200).json({ success: true, data: query.rows });
   } catch (err) {
