@@ -1,4 +1,4 @@
-.grid-wrapper {
+.home-grid-wrapper {
   display: grid;
   align-items: center;
   grid-template-columns: minmax(100px, 1fr) minmax(100px, 1fr);
@@ -30,19 +30,18 @@
 }
 
 @media (max-width: 1400px){
-  .grid-wrapper {
+  .home-grid-wrapper {
     row-gap: 50px !important;
     column-gap: 50px !important;
   } 
 }
 
 @media (max-width: 940px){
-  .grid-wrapper{
+  .home-grid-wrapper{
     grid-template-columns: minmax(100px, 1fr) !important;
   }
   .spacer{
-    grid-column-start: 1;
-    grid-column-end: span 1;
+    grid-column-end: span 1 !important;
   }
   #force-second{
     grid-row-start: 5;

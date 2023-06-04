@@ -12,7 +12,7 @@ function Home() {
     <div className="site-wrapper">
       <Navbar isLogged={isLogged} setIsLogged={setIsLogged} />
       <div className="cage">
-        <div className="grid-wrapper content">
+        <div className="home-grid-wrapper content">
           <div className="grid-text">
             <b>
               Jesteśmy osobami z pasją. Wykonujemy swoją pracę z zamiłowania i

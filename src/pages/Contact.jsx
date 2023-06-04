@@ -37,7 +37,7 @@ function Contact() {
     <div className="site-wrapper">
       <Navbar isLogged={isLogged} setIsLogged={setIsLogged} />
       <div className="cage">
-        <div className="grid-wrapper content">
+        <div className="contact-grid-wrapper content">
           <div className="contact-info">
             <ul>
               <li className="flexblock">

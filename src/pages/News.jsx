@@ -58,7 +58,7 @@ function News() {
     <div className="site-wrapper">
       <Navbar isLogged={isLogged} setIsLogged={setIsLogged} />
       <div className="cage">
-        <div className="news-grid-wrapper">{elements}</div>
+        <div className="news-grid-wrapper content">{elements}</div>
         {isLogged && (
           <form onSubmit={handleSubmit}>
             <input
