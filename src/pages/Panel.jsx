@@ -30,7 +30,19 @@ function Panel() {
     <div className="site-wrapper">
       <Navbar isLogged={isLogged} setIsLogged={setIsLogged} />
       <div className="cage">
-        {isLogged && <div className="questions-grid-wrapper content">{elements}</div>}
+        {isLogged && <div className="questions-grid-wrapper content">
+          <div className="spacer"></div>
+          <h1 className="section-title">Dodaj post</h1>
+          <div className="spacer"></div>
+          <div className="post">
+            <h1 style={{color: "red"}}>TUTAJ DODAJ FORMULARZ DODAWANIA POSTA</h1>
+          </div>
+          <div className="spacer"></div>
+          <h1 className="section-title">Pytania</h1>
+          <div className="spacer"></div>
+
+          {elements}
+        </div>}
       </div>
       <Footer />
     </div>

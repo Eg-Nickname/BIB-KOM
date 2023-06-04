@@ -44,21 +44,27 @@ function Login() {
   return (
     <div className="site-wrapper">
       <Navbar isLogged={isLogged} setIsLogged={setIsLogged} />
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="username"
-          value={data.username}
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          name="password"
-          value={data.password}
-          onChange={handleChange}
-        />
-        <button>LOGIN</button>
-      </form>
+      <div className="login-wrapper">
+        <form onSubmit={handleSubmit}>
+          <h2>Login</h2>
+          <input
+            className="text-input"
+            type="text"
+            name="username"
+            value={data.username}
+            onChange={handleChange}
+          />
+          <h2>Hasło</h2>
+          <input
+            className="text-input"
+            type="password"
+            name="password"
+            value={data.password}
+            onChange={handleChange}
+          />
+          <button className="send-input">Zaloguj sie</button>
+        </form>
+      </div>
       <Footer />
     </div>
   );

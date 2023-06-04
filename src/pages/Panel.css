@@ -5,6 +5,11 @@
     padding: 20px;
 }
 
+.section-title{
+    width: auto;
+    margin: 0 auto;
+}
+
 .question-mail{
     padding-bottom: 20px;
 }

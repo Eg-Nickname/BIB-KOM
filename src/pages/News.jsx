@@ -74,6 +74,7 @@ function News() {
             <button>Prześlij</button>
           </form>
         )}
+        
         <div className="page-change-container">
           <button className="page-change" onClick={() => setPage(page - 1)} disabled={page === 1}>
           <img className="arrow-image" src={arrowleft}></img>
