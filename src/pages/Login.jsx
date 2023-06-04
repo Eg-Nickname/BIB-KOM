@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 function Login() {
   const navigate = useNavigate();
+  const [isLogged, setIsLogged] = useState(false);
   const [data, setData] = useState({
     username: "",
     password: "",
@@ -42,7 +43,7 @@ function Login() {
   };
   return (
     <div className="site-wrapper">
-      <Navbar />
+      <Navbar isLogged={isLogged} setIsLogged={setIsLogged} />
       <form onSubmit={handleSubmit}>
         <input
           type="text"

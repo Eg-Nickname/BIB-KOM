@@ -10,6 +10,7 @@ import contact from "../assets/contact-black.png";
 
 function Contact() {
   const startingData = { name: "", email: "", topic: "", text: "" };
+  const [isLogged, setIsLogged] = useState(false);
   const [data, setData] = useState(startingData);
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,7 +35,7 @@ function Contact() {
   };
   return (
     <div className="site-wrapper">
-      <Navbar />
+      <Navbar isLogged={isLogged} setIsLogged={setIsLogged} />
       <div className="cage">
         <div className="grid-wrapper content">
           <div className="contact-info">

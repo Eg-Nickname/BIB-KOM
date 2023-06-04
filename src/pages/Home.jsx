@@ -1,4 +1,5 @@
 import "./Home.css";
+import { useState } from "react";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import img1 from "../assets/img1.jpg";
@@ -6,9 +7,10 @@ import img2 from "../assets/img2.jpg";
 import img3 from "../assets/img3.jpg";
 
 function Home() {
+  const [isLogged, setIsLogged] = useState(false);
   return (
     <div className="site-wrapper">
-      <Navbar />
+      <Navbar isLogged={isLogged} setIsLogged={setIsLogged} />
       <div className="cage">
         <div className="grid-wrapper content">
           <div className="grid-text">
@@ -30,7 +32,7 @@ function Home() {
             <img className="grid-image" src={img2}></img>
           </div>
           <div className="grid-text" id="force-first">
-          <b>Naszą mocną stroną jest indywidualne podejście do klientów. </b>
+            <b>Naszą mocną stroną jest indywidualne podejście do klientów. </b>
             Dokonujemy wycen oraz doboru sprzętu z uwzględnieniem ich potrzeb i
             wymagań. Większość diagnoz uszkodzonego sprzętu dokonujemy na
             poczekaniu i bezpłatnie.

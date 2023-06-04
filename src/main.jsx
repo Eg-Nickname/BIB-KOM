@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Home from "./pages/Home.jsx";
 import News from "./pages/News.jsx";
+import Panel from "./pages/Panel.jsx";
 import Offers from "./pages/Offers.jsx";
 import Login from "./pages/Login.jsx";
 import Contact from "./pages/Contact.jsx";
@@ -19,7 +20,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/aktualności" element={<News />} />
         <Route path="/aktualności/*" element={<PostPage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/panel" element={<Home />} />
+        <Route path="/panel" element={<Panel />} />
         <Route path="/*" element={<Home />} />
       </Routes>
     </BrowserRouter>

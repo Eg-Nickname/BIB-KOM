@@ -18,7 +18,7 @@ const Navbar = memo((props) => {
         );
         setIsLogged(true);
       } catch (err) {
-        console.log(err.response.data);
+        console.log(err);
       }
     }
     Authenticate();
@@ -40,6 +40,11 @@ const Navbar = memo((props) => {
           <li>
             <Link to={"/kontakt"}>Kontakt</Link>
           </li>
+          {isLogged && (
+            <li>
+              <Link to={"/panel"}>Panel</Link>
+            </li>
+          )}
         </ul>
       </div>
     </nav>

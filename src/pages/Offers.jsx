@@ -5,6 +5,7 @@ import Footer from "../components/footer";
 import PhotoSlider from "../components/photoSlider";
 import placeholder from "../assets/placeholder.jpg";
 function Offers() {
+  const [isLogged, setIsLogged] = useState(false);
   const [images, setImages] = useState([
     { src: "1.png", text: "Zdj1" },
     { src: "2.png", text: "Zdj2" },
@@ -12,12 +13,10 @@ function Offers() {
     { src: "4.png", text: "Zdj4" },
     { src: "5.png", text: "Zdj5" },
     { src: "test_big_image.jpg", text: "Porsche" },
-
-
   ]);
   return (
     <div>
-      <Navbar />
+      <Navbar isLogged={isLogged} setIsLogged={setIsLogged} />
       <div className="pageWidth">
         <div className="cage">
           <PhotoSlider images={images} />

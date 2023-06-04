@@ -7,6 +7,7 @@ import placeholder from "../assets/placeholder.jpg";
 import { useLocation } from "react-router-dom";
 function PostPage() {
   const [post, setPost] = useState({});
+  const [isLogged, setIsLogged] = useState(false);
   useEffect(() => {
     async function fetchPost() {
       try {
@@ -26,7 +27,7 @@ function PostPage() {
   console.log(post);
   return (
     <div className="site-wrapper">
-      <Navbar />
+      <Navbar isLogged={isLogged} setIsLogged={setIsLogged} />
       <div className="cage">
         <div className="margin">
           <div className="flexblock">
@@ -35,7 +36,7 @@ function PostPage() {
               <div className="date">{post.date}</div>
             </div>
             <div>
-              <img className="imger"src={postImg}></img>
+              <img className="imger" src={postImg}></img>
             </div>
           </div>
           <div className="content">{post.text}</div>
