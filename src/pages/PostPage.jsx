@@ -8,26 +8,42 @@ import { useLocation } from "react-router-dom";
 function PostPage() {
   const [post, setPost] = useState({ date: "" });
   const fileInputRef = useRef(null);
+  const startingErrors = {
+    title: false,
+    text: false,
+  };
   const [isEditing, setIsEditing] = useState(false);
+  const [errors, setErrors] = useState(startingErrors);
   const [isLogged, setIsLogged] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.patch(
-        `http://localhost:5000/api/posts/${postId}`,
-        post,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
+    e.preventDefault();
+    Object.keys(post).forEach((k) => {
+      post[k] = String(post[k]).trim();
+    });
+    setErrors(() => ({
+      title: post.title.length === 0,
+      text: post.text.length === 0,
+    }));
+    console.log(errors);
+    if (post.title.length !== 0 && post.text.length !== 0) {
+      try {
+        const response = await axios.patch(
+          `http://localhost:5000/api/posts/${postId}`,
+          post,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        setIsEditing(false);
+        if (fileInputRef.current) {
+          fileInputRef.current.value = "";
         }
-      );
-      setIsEditing(false);
-      if (fileInputRef.current) {
-        fileInputRef.current.value = "";
+      } catch (err) {
+        console.log(err.response.data.msg);
       }
-    } catch (err) {
-      console.log(err.response.data.msg);
     }
   };
   const handleChange = (e) => {
@@ -71,14 +87,22 @@ function PostPage() {
           {isEditing && (
             <form onSubmit={handleSubmit}>
               <input
-                className="text-input post-edit-button"
+                className={
+                  errors.title
+                    ? "text-input post-edit-button error-input"
+                    : "text-input post-edit-button"
+                }
                 type="text"
                 name="title"
                 value={post.title}
                 onChange={handleChange}
               />
               <textarea
-                className="text-input post-edit-button"
+                className={
+                  errors.text
+                    ? "text-input post-edit-button error-input"
+                    : "text-input post-edit-button"
+                }
                 name="text"
                 value={post.text}
                 onChange={handleChange}

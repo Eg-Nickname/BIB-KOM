@@ -10,18 +10,41 @@ import contact from "../assets/contact-black.png";
 
 function Contact() {
   const startingData = { name: "", email: "", topic: "", text: "" };
+  const startingErrors = {
+    name: false,
+    email: false,
+    topic: false,
+    text: false,
+  };
   const [isLogged, setIsLogged] = useState(false);
   const [data, setData] = useState(startingData);
+  const [errors, setErrors] = useState(startingErrors);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(
-        "http://localhost:5000/api/questions",
-        data
-      );
-      setData(startingData);
-    } catch (err) {
-      console.log(err.response.data.msg);
+    Object.keys(data).forEach((k) => {
+      data[k] = data[k].trim();
+    });
+    setErrors(() => ({
+      name: data.name.length === 0,
+      email: data.email.length === 0,
+      topic: data.topic.length === 0,
+      text: data.text.length === 0,
+    }));
+    if (
+      data.name.length !== 0 &&
+      data.email.length !== 0 &&
+      data.topic.length !== 0 &&
+      data.text.length !== 0
+    ) {
+      try {
+        const response = await axios.post(
+          "http://localhost:5000/api/questions",
+          data
+        );
+        setData(startingData);
+      } catch (err) {
+        console.log(err.response.data.msg);
+      }
     }
   };
   const handleChange = (e) => {
@@ -73,7 +96,9 @@ function Contact() {
               <div className="input-box">
                 <h3>Imie i nazwisko</h3>
                 <input
-                  className="text-input"
+                  className={
+                    errors.name ? "text-input error-input" : "text-input"
+                  }
                   type="text"
                   name="name"
                   value={data.name}
@@ -83,7 +108,9 @@ function Contact() {
               <div className="input-box">
                 <h3>E-mail</h3>
                 <input
-                  className="text-input"
+                  className={
+                    errors.email ? "text-input error-input" : "text-input"
+                  }
                   type="text"
                   name="email"
                   value={data.email}
@@ -93,7 +120,9 @@ function Contact() {
               <div className="input-box">
                 <h3>Temat</h3>
                 <input
-                  className="text-input"
+                  className={
+                    errors.topic ? "text-input error-input" : "text-input"
+                  }
                   type="text"
                   name="topic"
                   value={data.topic}
@@ -103,7 +132,9 @@ function Contact() {
               <div className="input-box">
                 <h3>Treść</h3>
                 <textarea
-                  className="text-input"
+                  className={
+                    errors.text ? "text-input error-input" : "text-input"
+                  }
                   name="text"
                   value={data.text}
                   onChange={handleChange}

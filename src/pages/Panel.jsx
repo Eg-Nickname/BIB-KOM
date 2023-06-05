@@ -8,28 +8,42 @@ import Question from "../components/question";
 function Panel() {
   const defaultPost = { title: "", text: "" };
   const fileInputRef = useRef(null);
+  const startingErrors = {
+    title: false,
+    text: false,
+  };
   const [questions, setQuestions] = useState([{}]);
   const [click, setClick] = useState(1);
   const [isLogged, setIsLogged] = useState(false);
   const [data, setData] = useState(defaultPost);
+  const [errors, setErrors] = useState(startingErrors);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(
-        "http://localhost:5000/api/posts",
-        data,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
+    Object.keys(data).forEach((k) => {
+      data[k] = data[k].trim();
+    });
+    setErrors(() => ({
+      title: data.title.length === 0,
+      text: data.text.length === 0,
+    }));
+    if (data.title.length !== 0 && data.text.length !== 0) {
+      try {
+        const response = await axios.post(
+          "http://localhost:5000/api/posts",
+          data,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        if (fileInputRef.current) {
+          fileInputRef.current.value = "";
         }
-      );
-      if (fileInputRef.current) {
-        fileInputRef.current.value = "";
+        await setData(defaultPost);
+      } catch (err) {
+        console.log(err.response.data.msg);
       }
-      await setData(defaultPost);
-    } catch (err) {
-      console.log(err.response.data.msg);
     }
   };
   const handleChange = (e) => {
@@ -78,14 +92,22 @@ function Panel() {
             <div className="post">
               <form onSubmit={handleSubmit}>
                 <input
-                  className="text-input input-spacing"
+                  className={
+                    errors.title
+                      ? "text-input input-spacing error-input"
+                      : "text-input input-spacing"
+                  }
                   type="text"
                   name="title"
                   value={data.title}
                   onChange={handleChange}
                 />
                 <textarea
-                  className="text-input input-spacing"
+                  className={
+                    errors.text
+                      ? "text-input input-spacing error-input"
+                      : "text-input input-spacing"
+                  }
                   name="text"
                   value={data.text}
                   onChange={handleChange}
