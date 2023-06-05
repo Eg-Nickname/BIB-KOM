@@ -80,3 +80,7 @@
     background-color: #e0b178;
     cursor: not-allowed;
 }
+
+.post-image{
+    border-radius: 10px;
+}
