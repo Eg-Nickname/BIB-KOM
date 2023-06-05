@@ -115,3 +115,79 @@ footer li.flexblock {
     padding: 0px 60px;
   }
 }
+
+/* Navbar responsive */
+.nav-toogle{
+  display: none;
+}
+@media (max-width: 870px){
+  .nav-link, .logo-desktop{
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+    transition: 300ms all;
+  }
+  .nav-toogle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  nav{
+    height: auto;
+    padding: 0px;
+    transition: 300ms all;
+  }
+  nav ul{
+    padding: 0px;
+    width: 100%;
+    height: 111px;
+    flex-direction: column;
+    transition: 300ms all;
+  }
+
+  nav ul.active{
+    height: auto;
+  }
+
+  nav ul li{
+    display: flex;
+    width: calc(100% - 40px);
+    padding: 20px;
+    margin: 0;
+  }
+
+  nav li:hover {
+    border-bottom: 4px solid;
+    border-image-slice: 1;
+    border-width: 4px;
+    border-image-source: linear-gradient(90.24deg, #242424 -9.45%, #242424 98.82%);;
+  }
+  .burger{
+    cursor: pointer;
+    width: 42px;
+    height: 42px;
+    filter: invert(100%) sepia(0%) saturate(7469%) hue-rotate(11deg) brightness(109%) contrast(107%);
+  }
+
+  nav .nav-link.active{
+    display: block;
+    border-top: 2px solid;
+    border-bottom: 0px solid !important;
+    border-image-slice: 1;
+    border-width: 2px;
+    border-image-source: var(--UI-gradient);
+
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    padding: 20px;
+  }
+
+  nav li:hover .active {
+    border-top: 2px solid;
+    border-image-slice: 1;
+    border-width: 2px;
+    border-image-source: var(--UI-gradient);
+  }
+}

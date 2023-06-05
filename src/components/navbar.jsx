@@ -1,10 +1,20 @@
 import logo from "../assets/Logo.png";
+import hamburger from "../assets/hamburger.svg";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { memo } from "react";
 import axios from "axios";
+import { useState } from "react";
+
+
+
 
 const Navbar = memo((props) => {
+const [isActive, setActive] = useState(false);
+
+  const toggleMenu = () => {
+    setActive(!isActive);
+  };
   const { isLogged, setIsLogged } = props;
   useEffect(() => {
     async function Authenticate() {
@@ -26,22 +36,26 @@ const Navbar = memo((props) => {
   return (
     <nav className="flexblock">
       <div className="flexblock pageWidth">
-        <img className="logo" src={logo}></img>
-        <ul className="flexblock">
-          <li>
+        <img className="logo-desktop logo" src={logo}></img>
+        <ul className={isActive ? 'flexblock active': 'flexblock'}>
+          <li className="nav-toogle">
+            <img className="logo" src={logo}></img>
+            <img className="burger" src={hamburger} onClick={toggleMenu}></img>
+          </li>
+          <li className={isActive ? 'nav-link active': 'nav-link'}>
             <Link to={"/"}>Strona główna</Link>
           </li>
-          <li>
+          <li className={isActive ? 'nav-link active': 'nav-link'}>
             <Link to={"/aktualności"}>Aktualności</Link>
           </li>
-          <li>
+          <li className={isActive ? 'nav-link active': 'nav-link'}>
             <Link to={"/oferty"}>Oferty</Link>
           </li>
-          <li>
+          <li className={isActive ? 'nav-link active': 'nav-link'}>
             <Link to={"/kontakt"}>Kontakt</Link>
           </li>
           {isLogged && (
-            <li>
+            <li className={isActive ? 'nav-link active': 'nav-link'}>
               <Link to={"/panel"}>Panel</Link>
             </li>
           )}
