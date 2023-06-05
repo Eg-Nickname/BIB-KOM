@@ -1,13 +1,19 @@
 .questions-grid-wrapper{
     display: grid;
     row-gap: 30px;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
     padding: 20px;
 }
 
 .section-title{
     width: auto;
     margin: 0 auto;
+}
+.no-grid-spacer{
+    grid-column-start: 1;
+    grid-column-end: span 1;
+    height: 4px;
+    background: linear-gradient(90.24deg, #e49333 -9.45%, #fec27a 98.82%);
 }
 
 .question-mail{
