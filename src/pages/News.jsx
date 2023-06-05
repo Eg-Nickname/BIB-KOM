@@ -9,7 +9,7 @@ import arrowleft from "../assets/arrow-left-solid.svg";
 import arrowright from "../assets/arrow-right-solid.svg";
 
 function News() {
-  const [posts, setPosts] = useState([{}]);
+  const [posts, setPosts] = useState([{ date: "" }]);
   const [page, setPage] = useState(1);
   const [click, setClick] = useState(1);
   const [isLogged, setIsLogged] = useState(false);

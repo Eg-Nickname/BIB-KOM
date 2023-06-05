@@ -6,7 +6,7 @@ import Footer from "../components/footer";
 import placeholder from "../assets/placeholder.jpg";
 import { useLocation } from "react-router-dom";
 function PostPage() {
-  const [post, setPost] = useState({});
+  const [post, setPost] = useState({ date: "" });
   const fileInputRef = useRef(null);
   const [isEditing, setIsEditing] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
@@ -22,7 +22,7 @@ function PostPage() {
           },
         }
       );
-      setIsEditing(false)
+      setIsEditing(false);
       if (fileInputRef.current) {
         fileInputRef.current.value = "";
       }
@@ -77,7 +77,12 @@ function PostPage() {
                 value={post.title}
                 onChange={handleChange}
               />
-              <textarea className="text-input post-edit-button" name="text" value={post.text} onChange={handleChange} />
+              <textarea
+                className="text-input post-edit-button"
+                name="text"
+                value={post.text}
+                onChange={handleChange}
+              />
               <input
                 className="text-input file-input post-edit-button"
                 type="file"
@@ -93,7 +98,7 @@ function PostPage() {
               <div className="flexblock flex-responsive">
                 <div className="headers">
                   <div className="title">{post.title}</div>
-                  <div className="date">{post.date}</div>
+                  <div className="date">{post.date.substring(0, 10)}</div>
                 </div>
                 <div>
                   <img className="imger" src={postImg}></img>
@@ -103,7 +108,12 @@ function PostPage() {
             </div>
           )}
           {isLogged && (
-            <button className="send-input post-edit-button" onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'Przestań edytować': 'Edytuj'}</button>
+            <button
+              className="send-input post-edit-button"
+              onClick={() => setIsEditing(!isEditing)}
+            >
+              {isEditing ? "Przestań edytować" : "Edytuj"}
+            </button>
           )}
         </div>
       </div>

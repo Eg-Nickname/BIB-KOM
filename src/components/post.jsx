@@ -26,7 +26,7 @@ function Post(props) {
         <div className="flexblock flex-responsive">
           <div className="header">
             <div className="title">{title}</div>
-            <div className="date">{date}</div>
+            <div className="date">{date.substring(0, 10)}</div>
           </div>
           <img className="post-image" src={source}></img>
         </div>
