@@ -13,13 +13,16 @@ function Offers() {
   ]);
   return (
     <div>
+      <div className="site-wrapper">
       <Navbar isLogged={isLogged} setIsLogged={setIsLogged} />
-      <div className="pageWidth">
-        <div className="cage">
-          <PhotoSlider images={images} />
+
+        <div className="cage content">
+            <h1 className="offers-title">Produkty</h1>
+            <PhotoSlider images={images} />
         </div>
-      </div>
+
       <Footer />
+      </div>
     </div>
   );
 }

@@ -2,6 +2,8 @@ import telephone from "../assets/telephone.png";
 import phone from "../assets/phone.png";
 import location from "../assets/location.png";
 import contact from "../assets/contact.png";
+import facebook from "../assets/facebook-icon.png";
+
 
 function Footer() {
   return (
@@ -23,6 +25,10 @@ function Footer() {
           <li className="flexblock">
             <img className="footer__telephone" src={contact} />
             kontakt@bibkom.pl
+          </li>
+          <li className="flexblock">
+            <a href="https://www.facebook.com/BiBkom.sklep.serwis.PC.GSM/"><img className="footer__telephone" src={facebook} />
+            Facebook</a>
           </li>
         </ul>
       </div>

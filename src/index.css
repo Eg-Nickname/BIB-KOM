@@ -15,6 +15,7 @@
 body {
   background-color: var(--UI-background);
   overflow-x: hidden;
+  font-family: "Noto Sans", sans-serif;
 }
 .site-wrapper {
   min-height: 100vh;
@@ -36,7 +37,7 @@ footer {
 }
 footer {
   text-align: left;
-  height: 160px;
+  height: 190px;
   position: absolute;
   width: 100%;
   bottom: 0;
@@ -62,12 +63,12 @@ footer li + li {
   width: 66vw;
 }
 .content {
-  padding-bottom: 190px;
+  padding-bottom: 210px;
 }
 .cage {
   margin: 0 auto;
   width: 66vw;
-  min-height: calc(100vh - 120px);
+  min-height: calc(100vh - 220px);
   background-color: white;
 }
 .flexblock {
