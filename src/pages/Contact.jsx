@@ -42,7 +42,7 @@ function Contact() {
             <ul>
               <li className="flexblock">
                 <img className="footer__location" src={location} />
-                Kościuszki 1D Rabka - Zdrój 34-700
+                Kościuszki&nbsp;1D Rabka&nbsp;-&nbsp;Zdrój 34&#8288;-&#8288;700
               </li>
               <li className="flexblock">
                 <img src={phone} className="footer__phone" />

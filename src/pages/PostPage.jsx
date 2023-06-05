@@ -22,6 +22,7 @@ function PostPage() {
           },
         }
       );
+      setIsEditing(false)
       if (fileInputRef.current) {
         fileInputRef.current.value = "";
       }
@@ -70,24 +71,26 @@ function PostPage() {
           {isEditing && (
             <form onSubmit={handleSubmit}>
               <input
+                className="text-input post-edit-button"
                 type="text"
                 name="title"
                 value={post.title}
                 onChange={handleChange}
               />
-              <textarea name="text" value={post.text} onChange={handleChange} />
+              <textarea className="text-input post-edit-button" name="text" value={post.text} onChange={handleChange} />
               <input
+                className="text-input file-input post-edit-button"
                 type="file"
                 onChange={handleFileChange}
                 ref={fileInputRef}
               />
-              <button>Prześlij</button>
+              <button className="send-input post-edit-button">Prześlij</button>
             </form>
           )}
           {!isEditing && (
             <div>
               {" "}
-              <div className="flexblock">
+              <div className="flexblock flex-responsive">
                 <div className="headers">
                   <div className="title">{post.title}</div>
                   <div className="date">{post.date}</div>
@@ -100,7 +103,7 @@ function PostPage() {
             </div>
           )}
           {isLogged && (
-            <button onClick={() => setIsEditing(!isEditing)}>EDYTUJ</button>
+            <button className="send-input post-edit-button" onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'Przestań edytować': 'Edytuj'}</button>
           )}
         </div>
       </div>

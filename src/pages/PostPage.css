@@ -54,3 +54,17 @@
   font-size: 12;
   margin-top: 30px;
 }
+
+.post-edit-button{
+  margin-top: 20px;
+}
+
+
+
+@media (max-width: 1100px){
+  .flex-responsive {
+    flex-direction: column;
+    margin-bottom: 30px;
+  }
+}
+

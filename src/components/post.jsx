@@ -23,7 +23,7 @@ function Post(props) {
   return (
     <div className="post">
       <form onSubmit={handleSubmit}>
-        <div className="flexblock">
+        <div className="flexblock flex-responsive">
           <div className="header">
             <div className="title">{title}</div>
             <div className="date">{date}</div>

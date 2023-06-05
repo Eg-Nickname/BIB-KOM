@@ -16,6 +16,10 @@
     background: linear-gradient(90.24deg, #e49333 -9.45%, #fec27a 98.82%);
 }
 
+.input-spacing{
+    margin-bottom: 30px;
+}
+
 .question-mail{
     padding-bottom: 20px;
 }

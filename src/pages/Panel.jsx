@@ -78,22 +78,25 @@ function Panel() {
             <div className="post">
               <form onSubmit={handleSubmit}>
                 <input
+                  className="text-input input-spacing"
                   type="text"
                   name="title"
                   value={data.title}
                   onChange={handleChange}
                 />
                 <textarea
+                  className="text-input input-spacing"
                   name="text"
                   value={data.text}
                   onChange={handleChange}
                 />
                 <input
+                  className="text-input file-input input-spacing"
                   type="file"
                   onChange={handleFileChange}
                   ref={fileInputRef}
                 />
-                <button>Prześlij</button>
+                <button className="send-input">Prześlij</button>
               </form>
             </div>
             <div className="no-grid-spacer"></div>

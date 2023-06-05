@@ -12,9 +12,7 @@ import { useState } from "react";
 const Navbar = memo((props) => {
 const [isActive, setActive] = useState(false);
 
-  const toggleMenu = () => {
-    setActive(!isActive);
-  };
+
   const { isLogged, setIsLogged } = props;
   useEffect(() => {
     async function Authenticate() {
@@ -40,7 +38,9 @@ const [isActive, setActive] = useState(false);
         <ul className={isActive ? 'flexblock active': 'flexblock'}>
           <li className="nav-toogle">
             <img className="logo" src={logo}></img>
-            <img className="burger" src={hamburger} onClick={toggleMenu}></img>
+            <img className="burger" src={hamburger} onClick={() => {
+    setActive(!isActive);
+  }}></img>
           </li>
           <li className={isActive ? 'nav-link active': 'nav-link'}>
             <Link to={"/"}>Strona główna</Link>
