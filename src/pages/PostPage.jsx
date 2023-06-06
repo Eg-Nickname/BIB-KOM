@@ -4,7 +4,7 @@ import Navbar from "../components/navbar";
 import axios from "axios";
 import Footer from "../components/footer";
 import placeholder from "../assets/placeholder.jpg";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 function PostPage() {
   const [post, setPost] = useState({ date: "" });
   const fileInputRef = useRef(null);
@@ -19,13 +19,14 @@ function PostPage() {
     e.preventDefault();
     e.preventDefault();
     Object.keys(post).forEach((k) => {
-      post[k] = String(post[k]).trim();
+      if (k !== "image") {
+        post[k] = String(post[k]).trim();
+      }
     });
     setErrors(() => ({
       title: post.title.length === 0,
       text: post.text.length === 0,
     }));
-    console.log(errors);
     if (post.title.length !== 0 && post.text.length !== 0) {
       try {
         const response = await axios.patch(
@@ -75,7 +76,6 @@ function PostPage() {
     }
     fetchPost();
   }, [isEditing]);
-  console.log(post);
   const location = useLocation();
   const postId = location.pathname.split("/")[2];
   const postImg = `/src/assets/postImages/${post.image}`;
@@ -84,6 +84,12 @@ function PostPage() {
       <Navbar isLogged={isLogged} setIsLogged={setIsLogged} />
       <div className="cage">
         <div className="margin content">
+          <Link
+            className="send-input post-edit-button center-button"
+            to={"/aktualności"}
+          >
+            Przejdź do aktualności
+          </Link>
           {isEditing && (
             <form onSubmit={handleSubmit}>
               <input

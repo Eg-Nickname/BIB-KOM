@@ -197,12 +197,17 @@ textarea {
     padding: 0px 60px;
   }
 }
-
 /* Navbar responsive */
 .nav-toogle {
   display: none;
 }
 @media (max-width: 870px) {
+  .center-button {
+    display: block;
+    width: 400px;
+    text-align: center;
+    margin: 0 auto;
+  }
   .nav-link,
   .logo-desktop {
     width: 0;

@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 function Question(props) {
   const { Question_id, Email, Name, Topic, text } = props.data;
-  console.log(props.data);
   const setClick = props.setClick;
   const isLogged = props.isLogged;
   const handleSubmit = async (e) => {
@@ -24,10 +23,22 @@ function Question(props) {
       <form onSubmit={handleSubmit}>
         <div className="flexblock">
           <div className="header">
-            <div className="question-name"><h3>Imie i nazwisko: </h3>{Name}</div>
-            <div className="question-mail"><h3>E-mail: </h3>{Email}</div>
-            <div className="question-topic"><h3>Temat: </h3>{Topic}</div>
-            <div className="question-text"><h3>Wiadomość: </h3>{text}</div>
+            <div className="question-name">
+              <h3>Imie i nazwisko: </h3>
+              {Name}
+            </div>
+            <div className="question-mail">
+              <h3>E-mail: </h3>
+              {Email}
+            </div>
+            <div className="question-topic">
+              <h3>Temat: </h3>
+              {Topic}
+            </div>
+            <div className="question-text">
+              <h3>Wiadomość: </h3>
+              {text}
+            </div>
           </div>
         </div>
         <div className="padding-button">

@@ -28,8 +28,6 @@ function Login() {
     let { username, password } = data;
     username = username.trim();
     password = password.trim();
-    console.log(username);
-    console.log(password);
     login();
   };
   const handleChange = (e) => {

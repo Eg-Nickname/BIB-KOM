@@ -1,11 +1,13 @@
 import "./Panel.css";
 
 import { useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/navbar";
 import axios from "axios";
 import Footer from "../components/footer";
 import Question from "../components/question";
 function Panel() {
+  const navigate = useNavigate();
   const defaultPost = { title: "", text: "" };
   const fileInputRef = useRef(null);
   const startingErrors = {
@@ -20,7 +22,9 @@ function Panel() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     Object.keys(data).forEach((k) => {
-      data[k] = data[k].trim();
+      if (k !== "image") {
+        data[k] = String(data[k]).trim();
+      }
     });
     setErrors(() => ({
       title: data.title.length === 0,
@@ -79,7 +83,6 @@ function Panel() {
       />
     );
   });
-  console.log(data);
   return (
     <div className="site-wrapper">
       <Navbar isLogged={isLogged} setIsLogged={setIsLogged} />
