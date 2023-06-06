@@ -1,3 +1,13 @@
+import crossSpawn from 'cross-spawn';
+
+// Uruchomienie polecenia npm run dev
+const devProcess = crossSpawn('npm', ['run', 'dev', '--', '--host'], { stdio: 'inherit' });
+
+devProcess.on('close', (code) => {
+  console.log(`Child process exited with code ${code}`);
+});
+
+
 import express from "express";
 import pg from "pg";
 import cors from "cors";
