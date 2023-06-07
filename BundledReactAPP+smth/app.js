@@ -70,11 +70,11 @@ const authenticateToken = (req, res) => {
 
 const Pool = pg.Pool;
 const pool = new Pool({
-  user: "postgres",
-  host: "localhost",
-  database: "Bibkom",
-  password: "1234",
-  port: 5001,
+  user: process.env.DBUSER,
+  host: process.env.HOST,
+  database: process.env.DATABASE,
+  password: process.env.PASSWORD,
+  port: Number(process.env.PORT),
 });
 
 const PORT = 5000;
