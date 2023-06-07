@@ -73,7 +73,7 @@ const pool = new Pool({
   user: process.env.DBUSER,
   host: process.env.HOST,
   database: process.env.DATABASE,
-  password: process.env.PASSWORD,
+  password: process.env.DBPASSWORD,
   port: Number(process.env.PORT),
 });
 
